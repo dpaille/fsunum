@@ -32,25 +32,25 @@ Despite being scrathpad precision bounded, the fsunum libraries pass the main te
 
 The fsunum **basic** libraries has two layers:
 1. `basic\scratchpad`: the scratchpad defined as an interface type in `ifl.fs` file along with two actual implementations: the primitivz 64 bits F# `float` type and the double-float `dfloat` type from the `df.fs` file. The `dfloat` type has the same dynamic range as `float` but up to 106 bits of precision.
-2. `basic\unum` the unum/ubound level, mainly translating the Mathematica code in the `unum64.fs` file. In `uboundenv64.fs` the uboundenv types enhance usability, allowing lazy evaluation, symbolic computation (expression evaluation) and functions as expression. A `plotly.fs` file allows to make charts from unum functions using the [plot.ly](https://plot.ly/) library. This file contains a algorithm preventing information loss from general functions over domains.
+2. `basic\unum`: the unum/ubound level, mainly a translation of the Mathematica code in the `unum64.fs` file. In `uboundenv64.fs` the uboundenv types enhance usability, allow lazy evaluation, symbolic computation (expression evaluation) and functions as expression. A `plotly.fs` file gives charts to unum functions using the [plot.ly](https://plot.ly/) library. This file contains a algorithm preventing information loss from general functions over domains.
 
 Each layers has their source code in a `src` folder along with a `tests` folder for integration tests. The tests in `ununm\tests` folder are good entry point on how using fsunum unums.
 
 A global solution file, at the root of the library, `basic.sln`, allows to build the libraries and run all tests. During the generation, the files `basiscratchpad.dll` and `basicunum.dll` are copied into a `bin` directory at library root for your own projects.
 
-An example project `chartexamples` is there to show you how to make your own projects. If you need to access the code from fsunum while coding, it maybe better to temporarily add your project to the `basic.sln` solution.
+An example project `chartexamples` shows how to make your own projects. If you need to access the code from fsunum while coding, it maybe better to temporarily add your project to the `basic.sln` solution.
 
 Note there is an **advanced** libraries set which is not published at this time. The structure is similar to the basic ones and they feature:
 * a quad-floats type scratchpad (`qfloat`) with 212 bits of precision,
-* a unum128 version of unum/ubound based on the `uint128` type.
+* a `unum128` version of unum/ubound based on the `uint128` type.
 
 ## Notes on tests
 
-The tests on scratchpad types are the ones from the QD library from [David Bailey/LBNL](#licenses-notes-and-sources). They verify the accuracy obtained on classical math functions.
+The tests on scratchpad types are the ones from the QD library from [David Bailey/LBNL](#licenses-and-sources). They verify the accuracy obtained on classical math functions.
 
-The tests on unums are from the Gustafson book. Here are some descriptions if you're not in front of the book.
+The tests on unums are from the Gustafson book. Here are some explanations:
 
-* Bailey’s numerical nightmare: an integer coefficients 2x2 equations solving that fails on float (64 bits) but succeeds with unums {3,5} (single float (32 bits) like precision) with `dfloat` scratchpad. The different tests shows how to use:
+* Baileyâ€™s numerical nightmare: an integer coefficients 2x2 equations solving that fails on float (64 bits) but succeeds with unums {3,5} (single float (32 bits) like precision) with `dfloat` scratchpad. The different tests shows how to use:
   * `UboundenvDM` type: unums with data movement tallying,
   * `Uboundenv` type: unums evaluated at each computation,
   * `Uboundenvg` type: unums staying in the scratchpad and evaluated as unum at the end of computations (much faster).
@@ -70,39 +70,39 @@ Build the libraries using the `basic.sln` solution file. You can now link them i
 1) open a command promt (cmd.exe) then invoke a fsi session like so:
 ```
 Microsoft Windows [version 10.0.17134.471]
-(c) 2018 Microsoft Corporation. Tous droits réservés.
+(c) 2018 Microsoft Corporation. Tous droits rÃ©servÃ©s.
 
 C:\Users\your_account>dotnet "C:\Program Files\dotnet\sdk\2.1.502\FSharp\fsi.exe"
 
 Microsoft (R) F# Interactive version 10.2.3 for F# 4.5
-Copyright (c) Microsoft Corporation. Tous droits réservés.
+Copyright (c) Microsoft Corporation. Tous droits rÃ©servÃ©s.
 
 Pour obtenir de l'aide, tapez #help;;
 
 >
 ```
-3) now getting the fsunum libraries available:
-* add the path to the fsunum libraries. Note that you will have to replace the **your_account** in the following path by your **actual account name**,
+2) now getting the fsunum libraries available:
+* add the path to the fsunum libraries. Note that you will have to replace in the following path the **your_account** string by your **actual account name**,
 * load the libraries,
 * open the fsunum namespace,
 * open the required modules for the desired operations.
 ```
 > #I @"C:\Users\your_account\source\repos\fsunum\bin\Debug\netstandard2.0";;
 
---> Ajout de 'C:\Users\your_account\source\repos\fsunum\bin\Debug\netstandard2.0' au chemin d'accès Include de la bibliothèque
+--> Ajout de 'C:\Users\your_account\source\repos\fsunum\bin\Debug\netstandard2.0' au chemin d'accÃ¨s Include de la bibliothÃ¨que
 
 > #r "basicscratchpad.dll";;
 
---> Référencement de 'C:\Users\your_account\source\repos\fsunum\bin\Debug\netstandard2.0\basicscratchpad.dll' (le fichier est peut-être verrouillé par le processus F# Interactive)
+--> RÃ©fÃ©rencement de 'C:\Users\your_account\source\repos\fsunum\bin\Debug\netstandard2.0\basicscratchpad.dll' (le fichier est peut-Ãªtre verrouillÃ© par le processus F# Interactive)
 
 > #r "basicunum.dll";;
 
---> Référencement de 'C:\Users\your_account\source\repos\fsunum\bin\Debug\netstandard2.0\basicunum.dll' (le fichier est peut-être verrouillé par le processus F# Interactive)
+--> RÃ©fÃ©rencement de 'C:\Users\your_account\source\repos\fsunum\bin\Debug\netstandard2.0\basicunum.dll' (le fichier est peut-Ãªtre verrouillÃ© par le processus F# Interactive)
 
 > open fsunum;;
 > open df;;
 ```
-4) let's do some math on the `dfloat` scratchpad:
+3) let's do some math on the `dfloat` scratchpad:
 ```
 > open unum64;; 
 > let one = dfloat.One;;
@@ -113,7 +113,8 @@ val two : dfloat = 2
 val sqrt2 : dfloat = 1.41421356237309504880168872421
 ```
 note the value of square root of 2 is workout to 31 digits.
-5) let's open unum64 module and do some math. We are using a {4,6} environment with a `float` scratchpad with unums lazily evaluated:
+
+4) let's open unum64 module and do some math. We are using a {4,6} environment with a `float` scratchpad with unums lazily evaluated:
 ```
 > let thirty = ENV46gf.IFrom.from 30.;;
 val thirty : Uboundg<float> = 30
@@ -125,10 +126,11 @@ val cos30deg : Uboundg<float> = 0.866025403784
 val it : string =
   "(0.8660254037844197227968834340572357177734375, 0.86602540378453340963460505008697509765625)"
 ```
-note that the computed value of square root of 3 over 2, is internally stored as one exact number with the ubit set, expressing the interval between the 2 exact unums, shown in the last line.
-6) for anything more sophisticated I strongly recommend to make projects. The `chartexamples` project gives you some examples of functions charting. If you run it the result will be the following charts in your browser, which is also the occasion to show unums behaviors and library features:
+note that the computed value of square root of 3 over 2, is internally stored as one exact number with the ubit set and expresses the interval between the 2 exact unums shown in the last line.
+
+5) for anything more sophisticated I strongly recommend to make projects. The `chartexamples` project gives you some examples of functions charting. If you run it the result will be the following charts in your browser, which is also the occasion to show unums behaviors and library features:
 * Note that in the code, we define math functions as a F# function returning an expression tree like so:
-```
+```fsharp
 (fun U -> fexp.From 1. + fexp.Sqr( fexp.Expr U ) + fexp.Log( fexp.Abs(fexp.From 1. + fexp.From 3. * (fexp.From 1. - fexp.Expr U)) ) / fexp.From 80. )
 ```
 The `U` expression is the function variable and the right part of this `->` statement is the function expression. This definition is then passed as an argument to a charting method which will evaluate it over a given interval.
