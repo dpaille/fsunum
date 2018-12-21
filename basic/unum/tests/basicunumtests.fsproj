@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="unumtests.fs" />
+    <Compile Include="unumteststype.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="1.4.0" />
+    <PackageReference Include="MSTest.TestFramework" Version="1.3.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="basicscratchpad">
+      <HintPath>..\..\scratchpad\src\bin\Debug\netstandard2.0\basicscratchpad.dll</HintPath>
+    </Reference>
+    <Reference Include="basicunum">
+      <HintPath>..\src\bin\Debug\netstandard2.0\basicunum.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

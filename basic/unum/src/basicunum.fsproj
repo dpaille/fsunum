@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RunPostBuildEvent>1</RunPostBuildEvent>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="unum64.fs" />
+    <Compile Include="uboundenv64.fs" />
+    <Compile Include="plot.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FSharp.Plotly" Version="1.1.21" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="basicscratchpad">
+      <HintPath>..\..\scratchpad\src\bin\Debug\netstandard2.0\basicscratchpad.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy $(TargetPath) ..\..\..\$(OutDir)" />
+  </Target>
+
+</Project>
