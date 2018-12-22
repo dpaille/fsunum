@@ -10,7 +10,7 @@ This is a port of the **unum type 1** to F# / .NET using floats as scratchpad.
 - [Licenses and sources](#licenses-and-sources)
 
 ## About 
-This follows the work from [J. L. Gustafson](http://johngustafson.net/) from his Mathematica prototype shown in his book [The End of Error](https://www.amazon.com/gp/product/1482239868?keywords=the%20end%20of%20error%20unum%20computing&qid=1456088488&ref_=sr_1_1&sr=8-1).
+This follows the work of [J. L. Gustafson](http://johngustafson.net/) from his Mathematica prototype shown in his book [The End of Error](https://www.amazon.com/gp/product/1482239868?keywords=the%20end%20of%20error%20unum%20computing&qid=1456088488&ref_=sr_1_1&sr=8-1).
 
 **Unums** are number systems defining **consecutive exact numbers** (IEEE float like) and **the interval between them** (using one bit, the **ubit**) so they **map the real line** at a given precision. As fields, they provide an algebraic way to do calculus. Unlike floats and classical methods, they don't rely on sampling and rounding to deliver **proven results** mostly at ULP level (Unit in the Last Place) or fall back on unums intervals. This behavior restores associativity and enable better parallel computations.
 
