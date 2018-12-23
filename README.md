@@ -31,7 +31,7 @@ Despite being scrathpad precision bounded, the fsunum libraries pass the main te
 ## Structure
 
 The fsunum **basic** libraries has two layers:
-1. `basic\scratchpad`: the scratchpad defined as an interface type in `ifl.fs` file along with two actual implementations: the primitivz 64 bits F# `float` type and the double-float `dfloat` type from the `df.fs` file. The `dfloat` type has the same dynamic range as `float` but up to 106 bits of precision.
+1. `basic\scratchpad`: the scratchpad defined as an interface type in `ifl.fs` file along with two actual implementations: the primitive 64 bits F# `float` type and the double-float `dfloat` type from the `df.fs` file. The `dfloat` type has the same dynamic range as `float` but up to 106 bits of precision.
 2. `basic\unum`: the unum/ubound level, mainly a translation of the Mathematica code in the `unum64.fs` file. In `uboundenv64.fs` the uboundenv types enhance usability, allow lazy evaluation, symbolic computation (expression evaluation) and functions as expression. A `plotly.fs` file gives charts to unum functions using the [plot.ly](https://plot.ly/) library. This file contains a algorithm preventing information loss from general functions over domains.
 
 Each layers has their source code in a `src` folder along with a `tests` folder for integration tests. The tests in `ununm\tests` folder are good entry point on how using fsunum unums.
