@@ -26,7 +26,7 @@ fsunum shifts unums handling when a hardware implementation seems impractical or
 | unums have variable sizes and their manipulation is slow when changing layers | embedded in fixed size integers and possibly lazily evaluated |
 | {e,f} global unum environment, functions check for valid arguments in every context, etc. | various optimizations: environment is independent from functions, validation occurs once per external call, etc. |
 
-Despite being scrathpad precision bounded, the fsunum libraries pass the main tests from the book (but one needs the scratchpad from the **advanced** library though).
+Despite being scratchpad precision bounded, the fsunum libraries pass the main tests from the book (but one needs the scratchpad from the **advanced** library though).
 
 ## Structure
 
