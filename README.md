@@ -57,11 +57,11 @@ The tests on unums are from the Gustafson book. Here are some explanations:
 
 * Jean-Michel Muller H function: A clever composite function that fails on every float but succeeds with unums whatever the precision (environement {0,0} works). It illustrates the use of the "`.=`" operator that returns true if there is a common interval for the two unums/ubounds compared.
 
-* The wrath of Kahan: a particular sequence that becomes unstable when the error builds up in the scratchpad. Unums on `dfloat` pass the test over the 12 iterations as in the book. Eventually it fails at the 29th iterations and two times that for `qfloat`. But as written, we can track the relative width of unums and know when more precision is required so we can take action.
+* The wrath of Kahan: a particular sequence that becomes unstable when the error builds up in the scratchpad. Unums on `dfloat` pass the test over the 12 iterations as in the book. Eventually it fails at the 29th iterations and two times that for `qfloat`. But as written in the book, we can track the relative width of unums and know when more precision is required so we can take actions.
 
 * The quadratic formula: a case where one solution has digits cancellation from a subtract operation. The `float32` solution has only 5 digits of precision whereas the {3,5} unum has 7 and a bounded result.
 
-* The smooth surprise: a general function that present a minus infinity pole on the given domain. With float, the pole is missed whatever the sampling. Unums gets the pole whatever the environment.
+* The smooth surprise: a general function that present a minus infinity pole on the given domain. With float, the pole is missed whatever the sampling. Unums get the pole whatever the environment.
 
 * Note that the Rump's royal pain test is not present in the basic fsunum tests: The `qfloat` scratchpad from the advanced library is required to pass this test.
 
